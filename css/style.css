@@ -988,3 +988,84 @@ a:focus-visible,button:focus-visible,input:focus-visible,textarea:focus-visible{
         max-height: 270px !important;
     }
 }
+
+/* =========================================================
+   FINAL GLOBAL FIX — SERVICE CTA + HERO IMAGE
+   ========================================================= */
+
+/* Center ALL CTA button groups */
+.hero-actions {
+    display: flex !important;
+    flex-direction: row !important;
+    flex-wrap: wrap !important;
+    justify-content: center !important;
+    align-items: center !important;
+    width: 100% !important;
+    margin-left: auto !important;
+    margin-right: auto !important;
+}
+
+.hero-actions .btn {
+    flex: 0 0 auto !important;
+    width: auto !important;
+    margin: 0 !important;
+}
+
+/* Keep service hero background */
+.hero-page.hero-page--service {
+    background:
+        radial-gradient(
+            circle at 78% 20%,
+            rgba(197,164,109,.18),
+            transparent 30%
+        ),
+        linear-gradient(
+            135deg,
+            #102f2a 0%,
+            #173b35 55%,
+            #214e45 100%
+        ) !important;
+}
+
+/* Keep service hero image INSIDE its media frame */
+.hero-page.hero-page--service .hero-page-media {
+    position: relative !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    overflow: hidden !important;
+}
+
+.hero-page.hero-page--service .hero-page-media img {
+    display: block !important;
+    width: 100% !important;
+    max-width: 470px !important;
+    height: 390px !important;
+    max-height: 390px !important;
+    object-fit: contain !important;
+    object-position: center !important;
+    margin: 0 auto !important;
+}
+
+/* Mobile */
+@media (max-width: 800px) {
+
+    .hero-actions {
+        flex-direction: column !important;
+        align-items: center !important;
+        justify-content: center !important;
+    }
+
+    .hero-actions .btn {
+        width: min(360px, 100%) !important;
+        margin-inline: auto !important;
+    }
+
+    .hero-page.hero-page--service .hero-page-media img {
+        width: 100% !important;
+        max-width: 390px !important;
+        height: auto !important;
+        max-height: 300px !important;
+        object-fit: contain !important;
+    }
+}
