@@ -632,3 +632,116 @@ a:focus-visible,button:focus-visible,input:focus-visible,textarea:focus-visible{
     }
 }
 
+/* =========================================================
+   I SMILE — FINAL SERVICE HERO FIX
+   Global fix for all service pages
+   ========================================================= */
+
+/* ---------- SERVICE HERO CONTENT ---------- */
+
+.service-page .video-content,
+.service-hero .video-content,
+.service-page .hero-content,
+.service-hero .hero-content {
+    width: 100%;
+    max-width: 100%;
+    margin-inline: auto;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    text-align: center;
+}
+
+/* ---------- SERVICE HERO TEXT ---------- */
+
+.service-page .video-content h1,
+.service-hero .video-content h1,
+.service-page .hero-subtitle,
+.service-hero .hero-subtitle {
+    margin-left: auto;
+    margin-right: auto;
+
+    text-align: center;
+}
+
+/* ---------- SERVICE HERO ACTIONS ---------- */
+
+.service-page .hero-actions,
+.service-hero .hero-actions {
+    width: 100%;
+
+    display: flex;
+
+    justify-content: center;
+    align-items: center;
+
+    margin-left: auto;
+    margin-right: auto;
+
+    text-align: center;
+
+    gap: 12px;
+}
+
+.service-page .hero-actions .btn,
+.service-hero .hero-actions .btn {
+    flex: 0 0 auto;
+}
+
+/* ---------- SERVICE HERO IMAGE ---------- */
+
+.service-page .hero-image,
+.service-hero .hero-image {
+    width: 100%;
+    max-width: 100%;
+
+    overflow: hidden;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.service-page .hero-image img,
+.service-hero .hero-image img {
+    display: block;
+
+    width: 100%;
+    height: 100%;
+
+    object-fit: cover;
+    object-position: center;
+}
+
+
+/* =========================================================
+   MOBILE
+   ========================================================= */
+
+@media (max-width: 800px) {
+
+    .service-page .video-content,
+    .service-hero .video-content,
+    .service-page .hero-content,
+    .service-hero .hero-content {
+        align-items: center;
+        text-align: center;
+    }
+
+    .service-page .hero-actions,
+    .service-hero .hero-actions {
+        width: 100%;
+
+        flex-direction: column;
+
+        align-items: center;
+        justify-content: center;
+    }
+
+    .service-page .hero-actions .btn,
+    .service-hero .hero-actions .btn {
+        width: min(360px, 100%);
+    }
+}
