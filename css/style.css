@@ -672,3 +672,18 @@ a:focus-visible,button:focus-visible,input:focus-visible,textarea:focus-visible{
         padding: 9px;
     }
 }
+
+/* =========================================================
+   SERVICE PAGES — CENTER HERO ACTIONS
+   Applies to all service pages
+   ========================================================= */
+
+.hero-actions {
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+}
+
+.hero-actions .btn {
+    flex: 0 0 auto;
+}
