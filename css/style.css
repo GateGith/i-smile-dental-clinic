@@ -633,27 +633,21 @@ a:focus-visible,button:focus-visible,input:focus-visible,textarea:focus-visible{
 }
 
 /* =========================================================
-   I SMILE — FINAL SERVICE HERO OVERRIDE
-   ONE GLOBAL FIX — ALL SERVICE PAGES
+   I SMILE — SERVICE HERO FINAL FIX
+   Image frame matches image box + centered CTAs
    ========================================================= */
 
-/* Restore the actual service hero */
 .hero-page.hero-page--service {
-    position: relative !important;
-
     display: block !important;
-
     width: 100% !important;
     min-height: 510px !important;
-
     overflow: hidden !important;
-
     color: #fff !important;
 
     background:
         radial-gradient(
             circle at 78% 20%,
-            rgba(197, 164, 109, .18),
+            rgba(197,164,109,.18),
             transparent 30%
         ),
         linear-gradient(
@@ -664,45 +658,26 @@ a:focus-visible,button:focus-visible,input:focus-visible,textarea:focus-visible{
         ) !important;
 }
 
-
-/* Restore the GRID layout */
 .hero-page.hero-page--service .hero-page-inner {
-    width: min(
-        calc(100% - 40px),
-        var(--container)
-    ) !important;
-
+    width: min(calc(100% - 40px), var(--container)) !important;
     min-height: 510px !important;
-
     margin-inline: auto !important;
 
     display: grid !important;
-
-    grid-template-columns:
-        minmax(0, 1.05fr)
-        minmax(300px, .75fr) !important;
+    grid-template-columns: minmax(0,1fr) minmax(360px,.8fr) !important;
 
     align-items: center !important;
-
-    justify-content: initial !important;
-
     gap: 70px !important;
 
     padding: 70px 0 !important;
-
-    text-align: center !important;
 }
 
 
 /* =========================================================
-   SERVICE HERO CONTENT
+   CONTENT — EVERYTHING CENTERED
    ========================================================= */
 
 .hero-page.hero-page--service .hero-page-content {
-    position: relative !important;
-
-    z-index: 2 !important;
-
     width: 100% !important;
     max-width: 690px !important;
 
@@ -710,151 +685,119 @@ a:focus-visible,button:focus-visible,input:focus-visible,textarea:focus-visible{
 
     display: flex !important;
     flex-direction: column !important;
-
     align-items: center !important;
     justify-content: center !important;
 
     text-align: center !important;
 }
 
-
-/* Badge */
 .hero-page.hero-page--service .hero-page-content .hero-badge {
-    margin-left: auto !important;
-    margin-right: auto !important;
+    margin-inline: auto !important;
 }
 
-
-/* Title */
 .hero-page.hero-page--service .hero-page-content h1 {
     width: 100% !important;
     max-width: 690px !important;
 
-    margin-left: auto !important;
-    margin-right: auto !important;
+    margin-inline: auto !important;
 
     text-align: center !important;
-
     color: #fff !important;
 }
 
-
-/* Description */
 .hero-page.hero-page--service .hero-page-content .hero-subtitle {
     width: 100% !important;
-    max-width: 650px !important;
+    max-width: 640px !important;
 
-    margin-left: auto !important;
-    margin-right: auto !important;
+    margin-inline: auto !important;
 
     text-align: center !important;
-
     color: rgba(255,255,255,.84) !important;
 }
 
 
 /* =========================================================
-   APPELER + WHATSAPP
+   BUTTONS — CENTERED
    ========================================================= */
 
-.hero-page.hero-page--service .hero-page-content .hero-actions {
+.hero-page.hero-page--service .hero-actions {
     width: 100% !important;
 
     display: flex !important;
-
     flex-direction: row !important;
 
-    align-items: center !important;
     justify-content: center !important;
+    align-items: center !important;
 
+    flex-wrap: wrap !important;
     gap: 12px !important;
 
-    margin-left: auto !important;
-    margin-right: auto !important;
-
-    text-align: center !important;
+    margin: 22px auto 0 !important;
 }
 
-.hero-page.hero-page--service .hero-page-content .hero-actions .btn {
-    flex: 0 0 auto !important;
-
+.hero-page.hero-page--service .hero-actions .btn {
     width: auto !important;
+    min-width: 170px !important;
+    flex: 0 0 auto !important;
 
     margin: 0 !important;
 }
 
 
 /* =========================================================
-   SERVICE HERO IMAGE
+   IMAGE — NO FAKE FRAME
+   The border is attached directly to the image box.
    ========================================================= */
 
 .hero-page.hero-page--service .hero-page-media {
     position: relative !important;
 
     width: 100% !important;
-
     min-width: 0 !important;
-    min-height: 330px !important;
+    min-height: 0 !important;
 
     display: flex !important;
-
     align-items: center !important;
     justify-content: center !important;
 
-    overflow: hidden !important;
+    margin-inline: auto !important;
 
-    background: transparent !important;
+    overflow: visible !important;
 }
 
 
-/* Decorative frame */
+/* Remove the old independent frame */
 .hero-page.hero-page--service .hero-page-media::before {
-    content: "" !important;
-
-    position: absolute !important;
-
-    inset: 8% 4% !important;
-
-    border:
-        1px solid rgba(197,164,109,.38) !important;
-
-    border-radius: 24px !important;
-
-    transform: rotate(2deg) !important;
-
-    pointer-events: none !important;
+    display: none !important;
 }
 
 
-/* Actual image */
+/* Image itself = frame */
 .hero-page.hero-page--service .hero-page-media img {
     position: relative !important;
-
     z-index: 1 !important;
 
     display: block !important;
 
     width: 100% !important;
-
     max-width: 470px !important;
 
-    height: 390px !important;
-
+    height: auto !important;
     max-height: 390px !important;
 
-    margin: 0 auto !important;
-    padding: 0 !important;
+    margin-inline: auto !important;
+    padding: 10px !important;
 
     object-fit: contain !important;
-
     object-position: center !important;
 
-    border-radius: 16px !important;
+    border: 1px solid rgba(197,164,109,.55) !important;
+    border-radius: 24px !important;
 
-    background: rgba(255,255,255,.04) !important;
+    background: rgba(255,255,255,.035) !important;
 
     box-shadow:
-        0 18px 50px rgba(0,0,0,.18) !important;
+        0 20px 55px rgba(0,0,0,.20) !important;
 }
 
 
@@ -867,13 +810,13 @@ a:focus-visible,button:focus-visible,input:focus-visible,textarea:focus-visible{
     .hero-page.hero-page--service .hero-page-inner {
         grid-template-columns:
             minmax(0,1fr)
-            minmax(280px,.75fr) !important;
+            minmax(300px,.8fr) !important;
 
-        gap: 35px !important;
+        gap: 40px !important;
     }
 
     .hero-page.hero-page--service .hero-page-media img {
-        height: 350px !important;
+        max-width: 400px !important;
         max-height: 350px !important;
     }
 }
@@ -890,85 +833,76 @@ a:focus-visible,button:focus-visible,input:focus-visible,textarea:focus-visible{
     }
 
     .hero-page.hero-page--service .hero-page-inner {
-        width:
-            min(
-                calc(100% - 28px),
-                var(--container)
-            ) !important;
-
+        width: min(calc(100% - 28px), var(--container)) !important;
         min-height: 0 !important;
 
         display: flex !important;
-
         flex-direction: column !important;
 
         align-items: center !important;
+        justify-content: center !important;
 
         gap: 30px !important;
 
-        padding:
-            58px 0 62px !important;
+        padding: 58px 0 62px !important;
     }
 
+
+    /* Content first */
     .hero-page.hero-page--service .hero-page-content {
         width: 100% !important;
-
         max-width: 650px !important;
 
         order: 1 !important;
 
         align-items: center !important;
-
         text-align: center !important;
     }
 
-    .hero-page.hero-page--service .hero-page-content h1 {
-        text-align: center !important;
-    }
 
-    .hero-page.hero-page--service .hero-page-content .hero-subtitle {
-        text-align: center !important;
-    }
-
-    .hero-page.hero-page--service .hero-page-content .hero-actions {
+    /* Buttons remain centered */
+    .hero-page.hero-page--service .hero-actions {
         width: 100% !important;
 
         display: flex !important;
-
         flex-direction: column !important;
 
         align-items: center !important;
-
         justify-content: center !important;
 
-        gap: 12px !important;
+        margin-inline: auto !important;
     }
 
-    .hero-page.hero-page--service .hero-page-content .hero-actions .btn {
-        width:
-            min(360px,100%) !important;
+    .hero-page.hero-page--service .hero-actions .btn {
+        width: min(360px,100%) !important;
+        min-width: 0 !important;
+
+        margin-inline: auto !important;
 
         justify-content: center !important;
     }
 
+
+    /* Image second */
     .hero-page.hero-page--service .hero-page-media {
         width: 100% !important;
-
-        min-height: 220px !important;
+        min-height: 0 !important;
 
         order: 2 !important;
+
+        display: flex !important;
+        align-items: center !important;
+        justify-content: center !important;
     }
 
     .hero-page.hero-page--service .hero-page-media img {
         width: 100% !important;
-
         max-width: 390px !important;
 
         height: auto !important;
+        max-height: none !important;
 
-        max-height: 300px !important;
-
-        object-fit: contain !important;
+        margin-inline: auto !important;
     }
 }
 
@@ -980,92 +914,10 @@ a:focus-visible,button:focus-visible,input:focus-visible,textarea:focus-visible{
 @media (max-width:430px) {
 
     .hero-page.hero-page--service .hero-page-inner {
-        width:
-            calc(100% - 24px) !important;
+        width: calc(100% - 24px) !important;
     }
 
     .hero-page.hero-page--service .hero-page-media img {
-        max-height: 270px !important;
-    }
-}
-
-/* =========================================================
-   FINAL GLOBAL FIX — SERVICE CTA + HERO IMAGE
-   ========================================================= */
-
-/* Center ALL CTA button groups */
-.hero-actions {
-    display: flex !important;
-    flex-direction: row !important;
-    flex-wrap: wrap !important;
-    justify-content: center !important;
-    align-items: center !important;
-    width: 100% !important;
-    margin-left: auto !important;
-    margin-right: auto !important;
-}
-
-.hero-actions .btn {
-    flex: 0 0 auto !important;
-    width: auto !important;
-    margin: 0 !important;
-}
-
-/* Keep service hero background */
-.hero-page.hero-page--service {
-    background:
-        radial-gradient(
-            circle at 78% 20%,
-            rgba(197,164,109,.18),
-            transparent 30%
-        ),
-        linear-gradient(
-            135deg,
-            #102f2a 0%,
-            #173b35 55%,
-            #214e45 100%
-        ) !important;
-}
-
-/* Keep service hero image INSIDE its media frame */
-.hero-page.hero-page--service .hero-page-media {
-    position: relative !important;
-    display: flex !important;
-    align-items: center !important;
-    justify-content: center !important;
-    overflow: hidden !important;
-}
-
-.hero-page.hero-page--service .hero-page-media img {
-    display: block !important;
-    width: 100% !important;
-    max-width: 470px !important;
-    height: 390px !important;
-    max-height: 390px !important;
-    object-fit: contain !important;
-    object-position: center !important;
-    margin: 0 auto !important;
-}
-
-/* Mobile */
-@media (max-width: 800px) {
-
-    .hero-actions {
-        flex-direction: column !important;
-        align-items: center !important;
-        justify-content: center !important;
-    }
-
-    .hero-actions .btn {
-        width: min(360px, 100%) !important;
-        margin-inline: auto !important;
-    }
-
-    .hero-page.hero-page--service .hero-page-media img {
-        width: 100% !important;
-        max-width: 390px !important;
-        height: auto !important;
-        max-height: 300px !important;
-        object-fit: contain !important;
+        max-width: 350px !important;
     }
 }
