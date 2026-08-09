@@ -921,3 +921,53 @@ a:focus-visible,button:focus-visible,input:focus-visible,textarea:focus-visible{
         max-width: 350px !important;
     }
 }
+
+/* =========================================================
+   I SMILE — FORCE SERVICE HERO CTA CENTER
+   ========================================================= */
+
+.hero-page.hero-page--service .hero-page-content {
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    justify-content: center !important;
+    text-align: center !important;
+}
+
+.hero-page.hero-page--service .hero-page-content .hero-actions {
+    display: flex !important;
+    flex-direction: row !important;
+    flex-wrap: wrap !important;
+    justify-content: center !important;
+    align-items: center !important;
+
+    width: fit-content !important;
+    max-width: 100% !important;
+
+    margin-left: auto !important;
+    margin-right: auto !important;
+    padding: 0 !important;
+}
+
+.hero-page.hero-page--service .hero-page-content .hero-actions .btn {
+    display: inline-flex !important;
+    flex: 0 0 auto !important;
+    width: auto !important;
+    margin: 0 !important;
+}
+
+/* Mobile */
+@media (max-width: 800px) {
+    .hero-page.hero-page--service .hero-page-content .hero-actions {
+        width: 100% !important;
+        max-width: 380px !important;
+        flex-direction: column !important;
+        align-items: center !important;
+        justify-content: center !important;
+    }
+
+    .hero-page.hero-page--service .hero-page-content .hero-actions .btn {
+        width: 100% !important;
+        max-width: 360px !important;
+    }
+}
