@@ -633,269 +633,358 @@ a:focus-visible,button:focus-visible,input:focus-visible,textarea:focus-visible{
 }
 
 /* =========================================================
-   I SMILE — FINAL SERVICE HERO
-   Applies automatically to ALL pages using:
-   .hero-page--service
+   I SMILE — FINAL SERVICE HERO OVERRIDE
+   ONE GLOBAL FIX — ALL SERVICE PAGES
    ========================================================= */
 
-/* ---------- HERO MAIN LAYOUT ---------- */
+/* Restore the actual service hero */
+.hero-page.hero-page--service {
+    position: relative !important;
 
-.hero-page--service {
-    position: relative;
-    width: 100%;
-    overflow: hidden;
-    background: var(--green-deep);
+    display: block !important;
+
+    width: 100% !important;
+    min-height: 510px !important;
+
+    overflow: hidden !important;
+
+    color: #fff !important;
+
+    background:
+        radial-gradient(
+            circle at 78% 20%,
+            rgba(197, 164, 109, .18),
+            transparent 30%
+        ),
+        linear-gradient(
+            135deg,
+            #102f2a 0%,
+            #173b35 55%,
+            #214e45 100%
+        ) !important;
 }
 
-.hero-page--service .hero-page-inner {
-    width: min(calc(100% - 40px), var(--container));
-    min-height: 620px;
-    margin-inline: auto;
 
-    display: grid;
-    grid-template-columns: minmax(0, 1fr) minmax(420px, 0.9fr);
+/* Restore the GRID layout */
+.hero-page.hero-page--service .hero-page-inner {
+    width: min(
+        calc(100% - 40px),
+        var(--container)
+    ) !important;
 
-    align-items: center;
-    gap: 70px;
+    min-height: 510px !important;
 
-    padding-top: 70px;
-    padding-bottom: 70px;
+    margin-inline: auto !important;
+
+    display: grid !important;
+
+    grid-template-columns:
+        minmax(0, 1.05fr)
+        minmax(300px, .75fr) !important;
+
+    align-items: center !important;
+
+    justify-content: initial !important;
+
+    gap: 70px !important;
+
+    padding: 70px 0 !important;
+
+    text-align: center !important;
 }
 
-/* ---------- LEFT CONTENT → CENTERED ---------- */
 
-.hero-page--service .hero-page-content {
-    width: 100%;
-    max-width: 650px;
+/* =========================================================
+   SERVICE HERO CONTENT
+   ========================================================= */
 
-    margin-inline: auto;
+.hero-page.hero-page--service .hero-page-content {
+    position: relative !important;
 
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+    z-index: 2 !important;
 
-    text-align: center;
+    width: 100% !important;
+    max-width: 690px !important;
+
+    margin-inline: auto !important;
+
+    display: flex !important;
+    flex-direction: column !important;
+
+    align-items: center !important;
+    justify-content: center !important;
+
+    text-align: center !important;
 }
 
-/* ---------- BADGE ---------- */
 
-.hero-page--service .hero-badge {
-    margin-inline: auto;
+/* Badge */
+.hero-page.hero-page--service .hero-page-content .hero-badge {
+    margin-left: auto !important;
+    margin-right: auto !important;
 }
 
-/* ---------- TITLE ---------- */
 
-.hero-page--service .hero-page-content h1 {
-    width: 100%;
-    max-width: 650px;
+/* Title */
+.hero-page.hero-page--service .hero-page-content h1 {
+    width: 100% !important;
+    max-width: 690px !important;
 
-    margin-left: auto;
-    margin-right: auto;
-    margin-bottom: 22px;
+    margin-left: auto !important;
+    margin-right: auto !important;
 
-    text-align: center;
+    text-align: center !important;
+
+    color: #fff !important;
 }
 
-/* ---------- DESCRIPTION ---------- */
 
-.hero-page--service .hero-subtitle {
-    width: 100%;
-    max-width: 600px;
+/* Description */
+.hero-page.hero-page--service .hero-page-content .hero-subtitle {
+    width: 100% !important;
+    max-width: 650px !important;
 
-    margin-left: auto;
-    margin-right: auto;
-    margin-bottom: 30px;
+    margin-left: auto !important;
+    margin-right: auto !important;
 
-    text-align: center;
+    text-align: center !important;
+
+    color: rgba(255,255,255,.84) !important;
 }
 
-/* ---------- CALL + WHATSAPP ---------- */
 
-.hero-page--service .hero-actions {
-    width: 100%;
+/* =========================================================
+   APPELER + WHATSAPP
+   ========================================================= */
 
-    display: flex;
-    flex-direction: row;
+.hero-page.hero-page--service .hero-page-content .hero-actions {
+    width: 100% !important;
 
-    align-items: center;
-    justify-content: center;
+    display: flex !important;
 
-    margin-left: auto;
-    margin-right: auto;
+    flex-direction: row !important;
 
-    gap: 12px;
+    align-items: center !important;
+    justify-content: center !important;
 
-    text-align: center;
+    gap: 12px !important;
+
+    margin-left: auto !important;
+    margin-right: auto !important;
+
+    text-align: center !important;
 }
 
-.hero-page--service .hero-actions .btn {
-    flex: 0 0 auto;
+.hero-page.hero-page--service .hero-page-content .hero-actions .btn {
+    flex: 0 0 auto !important;
+
+    width: auto !important;
+
+    margin: 0 !important;
 }
+
 
 /* =========================================================
    SERVICE HERO IMAGE
    ========================================================= */
 
-.hero-page--service .hero-page-media {
-    width: 100%;
-    min-width: 0;
+.hero-page.hero-page--service .hero-page-media {
+    position: relative !important;
 
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    width: 100% !important;
 
-    overflow: hidden;
+    min-width: 0 !important;
+    min-height: 330px !important;
 
-    border-radius: var(--radius-lg);
+    display: flex !important;
 
-    background: #edf2f0;
+    align-items: center !important;
+    justify-content: center !important;
+
+    overflow: hidden !important;
+
+    background: transparent !important;
+}
+
+
+/* Decorative frame */
+.hero-page.hero-page--service .hero-page-media::before {
+    content: "" !important;
+
+    position: absolute !important;
+
+    inset: 8% 4% !important;
+
+    border:
+        1px solid rgba(197,164,109,.38) !important;
+
+    border-radius: 24px !important;
+
+    transform: rotate(2deg) !important;
+
+    pointer-events: none !important;
+}
+
+
+/* Actual image */
+.hero-page.hero-page--service .hero-page-media img {
+    position: relative !important;
+
+    z-index: 1 !important;
+
+    display: block !important;
+
+    width: 100% !important;
+
+    max-width: 470px !important;
+
+    height: 390px !important;
+
+    max-height: 390px !important;
+
+    margin: 0 auto !important;
+    padding: 0 !important;
+
+    object-fit: contain !important;
+
+    object-position: center !important;
+
+    border-radius: 16px !important;
+
+    background: rgba(255,255,255,.04) !important;
 
     box-shadow:
-        0 25px 70px rgba(0, 0, 0, .18);
+        0 18px 50px rgba(0,0,0,.18) !important;
 }
 
-.hero-page--service .hero-page-media img {
-    display: block;
-
-    width: 100%;
-    height: 520px;
-
-    max-width: 100%;
-
-    margin: 0;
-    padding: 0;
-
-    object-fit: cover;
-    object-position: center center;
-
-    border-radius: inherit;
-}
 
 /* =========================================================
    TABLET
    ========================================================= */
 
-@media (max-width: 1050px) {
+@media (max-width:1050px) {
 
-    .hero-page--service .hero-page-inner {
+    .hero-page.hero-page--service .hero-page-inner {
         grid-template-columns:
-            minmax(0, 1fr)
-            minmax(340px, .85fr);
+            minmax(0,1fr)
+            minmax(280px,.75fr) !important;
 
-        gap: 40px;
-
-        min-height: 560px;
+        gap: 35px !important;
     }
 
-    .hero-page--service .hero-page-media img {
-        height: 450px;
+    .hero-page.hero-page--service .hero-page-media img {
+        height: 350px !important;
+        max-height: 350px !important;
     }
 }
+
 
 /* =========================================================
    MOBILE
    ========================================================= */
 
-@media (max-width: 800px) {
+@media (max-width:800px) {
 
-    .hero-page--service .hero-page-inner {
-        width: min(
-            calc(100% - 28px),
-            var(--container)
-        );
-
-        min-height: auto;
-
-        display: flex;
-        flex-direction: column;
-
-        align-items: center;
-
-        gap: 32px;
-
-        padding-top: 55px;
-        padding-bottom: 55px;
+    .hero-page.hero-page--service {
+        min-height: 0 !important;
     }
 
-    .hero-page--service .hero-page-content {
-        width: 100%;
-        max-width: 600px;
+    .hero-page.hero-page--service .hero-page-inner {
+        width:
+            min(
+                calc(100% - 28px),
+                var(--container)
+            ) !important;
 
-        order: 1;
+        min-height: 0 !important;
 
-        align-items: center;
+        display: flex !important;
 
-        text-align: center;
+        flex-direction: column !important;
+
+        align-items: center !important;
+
+        gap: 30px !important;
+
+        padding:
+            58px 0 62px !important;
     }
 
-    .hero-page--service .hero-page-media {
-        width: 100%;
+    .hero-page.hero-page--service .hero-page-content {
+        width: 100% !important;
 
-        order: 2;
+        max-width: 650px !important;
 
-        border-radius: 20px;
+        order: 1 !important;
+
+        align-items: center !important;
+
+        text-align: center !important;
     }
 
-    .hero-page--service .hero-page-media img {
-        width: 100%;
-        height: auto;
-
-        aspect-ratio: 4 / 3;
-
-        object-fit: cover;
-        object-position: center;
+    .hero-page.hero-page--service .hero-page-content h1 {
+        text-align: center !important;
     }
 
-    .hero-page--service .hero-page-content h1 {
-        text-align: center;
+    .hero-page.hero-page--service .hero-page-content .hero-subtitle {
+        text-align: center !important;
     }
 
-    .hero-page--service .hero-subtitle {
-        text-align: center;
+    .hero-page.hero-page--service .hero-page-content .hero-actions {
+        width: 100% !important;
+
+        display: flex !important;
+
+        flex-direction: column !important;
+
+        align-items: center !important;
+
+        justify-content: center !important;
+
+        gap: 12px !important;
     }
 
-    .hero-page--service .hero-actions {
-        width: 100%;
+    .hero-page.hero-page--service .hero-page-content .hero-actions .btn {
+        width:
+            min(360px,100%) !important;
 
-        display: flex;
-        flex-direction: column;
-
-        align-items: center;
-        justify-content: center;
-
-        gap: 12px;
+        justify-content: center !important;
     }
 
-    .hero-page--service .hero-actions .btn {
-        width: min(360px, 100%);
-        justify-content: center;
+    .hero-page.hero-page--service .hero-page-media {
+        width: 100% !important;
+
+        min-height: 220px !important;
+
+        order: 2 !important;
+    }
+
+    .hero-page.hero-page--service .hero-page-media img {
+        width: 100% !important;
+
+        max-width: 390px !important;
+
+        height: auto !important;
+
+        max-height: 300px !important;
+
+        object-fit: contain !important;
     }
 }
+
 
 /* =========================================================
    SMALL PHONES
    ========================================================= */
 
-@media (max-width: 430px) {
+@media (max-width:430px) {
 
-    .hero-page--service .hero-page-inner {
-        width: calc(100% - 24px);
-
-        padding-top: 45px;
-        padding-bottom: 45px;
-
-        gap: 28px;
+    .hero-page.hero-page--service .hero-page-inner {
+        width:
+            calc(100% - 24px) !important;
     }
 
-    .hero-page--service .hero-page-media {
-        border-radius: 16px;
-    }
-
-    .hero-page--service .hero-page-media img {
-        aspect-ratio: 4 / 3;
-    }
-
-    .hero-page--service .hero-actions .btn {
-        width: 100%;
+    .hero-page.hero-page--service .hero-page-media img {
+        max-height: 270px !important;
     }
 }
