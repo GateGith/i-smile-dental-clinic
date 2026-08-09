@@ -633,18 +633,41 @@ a:focus-visible,button:focus-visible,input:focus-visible,textarea:focus-visible{
 }
 
 /* =========================================================
-   I SMILE — FINAL SERVICE HERO FIX
-   Global fix for all service pages
+   I SMILE — FINAL SERVICE HERO
+   Applies automatically to ALL pages using:
+   .hero-page--service
    ========================================================= */
 
-/* ---------- SERVICE HERO CONTENT ---------- */
+/* ---------- HERO MAIN LAYOUT ---------- */
 
-.service-page .video-content,
-.service-hero .video-content,
-.service-page .hero-content,
-.service-hero .hero-content {
+.hero-page--service {
+    position: relative;
     width: 100%;
-    max-width: 100%;
+    overflow: hidden;
+    background: var(--green-deep);
+}
+
+.hero-page--service .hero-page-inner {
+    width: min(calc(100% - 40px), var(--container));
+    min-height: 620px;
+    margin-inline: auto;
+
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(420px, 0.9fr);
+
+    align-items: center;
+    gap: 70px;
+
+    padding-top: 70px;
+    padding-bottom: 70px;
+}
+
+/* ---------- LEFT CONTENT → CENTERED ---------- */
+
+.hero-page--service .hero-page-content {
+    width: 100%;
+    max-width: 650px;
+
     margin-inline: auto;
 
     display: flex;
@@ -654,67 +677,120 @@ a:focus-visible,button:focus-visible,input:focus-visible,textarea:focus-visible{
     text-align: center;
 }
 
-/* ---------- SERVICE HERO TEXT ---------- */
+/* ---------- BADGE ---------- */
 
-.service-page .video-content h1,
-.service-hero .video-content h1,
-.service-page .hero-subtitle,
-.service-hero .hero-subtitle {
+.hero-page--service .hero-badge {
+    margin-inline: auto;
+}
+
+/* ---------- TITLE ---------- */
+
+.hero-page--service .hero-page-content h1 {
+    width: 100%;
+    max-width: 650px;
+
     margin-left: auto;
     margin-right: auto;
+    margin-bottom: 22px;
 
     text-align: center;
 }
 
-/* ---------- SERVICE HERO ACTIONS ---------- */
+/* ---------- DESCRIPTION ---------- */
 
-.service-page .hero-actions,
-.service-hero .hero-actions {
+.hero-page--service .hero-subtitle {
+    width: 100%;
+    max-width: 600px;
+
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 30px;
+
+    text-align: center;
+}
+
+/* ---------- CALL + WHATSAPP ---------- */
+
+.hero-page--service .hero-actions {
     width: 100%;
 
     display: flex;
+    flex-direction: row;
 
-    justify-content: center;
     align-items: center;
+    justify-content: center;
 
     margin-left: auto;
     margin-right: auto;
 
-    text-align: center;
-
     gap: 12px;
+
+    text-align: center;
 }
 
-.service-page .hero-actions .btn,
-.service-hero .hero-actions .btn {
+.hero-page--service .hero-actions .btn {
     flex: 0 0 auto;
 }
 
-/* ---------- SERVICE HERO IMAGE ---------- */
+/* =========================================================
+   SERVICE HERO IMAGE
+   ========================================================= */
 
-.service-page .hero-image,
-.service-hero .hero-image {
+.hero-page--service .hero-page-media {
     width: 100%;
-    max-width: 100%;
-
-    overflow: hidden;
+    min-width: 0;
 
     display: flex;
     align-items: center;
     justify-content: center;
+
+    overflow: hidden;
+
+    border-radius: var(--radius-lg);
+
+    background: #edf2f0;
+
+    box-shadow:
+        0 25px 70px rgba(0, 0, 0, .18);
 }
 
-.service-page .hero-image img,
-.service-hero .hero-image img {
+.hero-page--service .hero-page-media img {
     display: block;
 
     width: 100%;
-    height: 100%;
+    height: 520px;
+
+    max-width: 100%;
+
+    margin: 0;
+    padding: 0;
 
     object-fit: cover;
-    object-position: center;
+    object-position: center center;
+
+    border-radius: inherit;
 }
 
+/* =========================================================
+   TABLET
+   ========================================================= */
+
+@media (max-width: 1050px) {
+
+    .hero-page--service .hero-page-inner {
+        grid-template-columns:
+            minmax(0, 1fr)
+            minmax(340px, .85fr);
+
+        gap: 40px;
+
+        min-height: 560px;
+    }
+
+    .hero-page--service .hero-page-media img {
+        height: 450px;
+    }
+}
 
 /* =========================================================
    MOBILE
@@ -722,26 +798,104 @@ a:focus-visible,button:focus-visible,input:focus-visible,textarea:focus-visible{
 
 @media (max-width: 800px) {
 
-    .service-page .video-content,
-    .service-hero .video-content,
-    .service-page .hero-content,
-    .service-hero .hero-content {
+    .hero-page--service .hero-page-inner {
+        width: min(
+            calc(100% - 28px),
+            var(--container)
+        );
+
+        min-height: auto;
+
+        display: flex;
+        flex-direction: column;
+
         align-items: center;
+
+        gap: 32px;
+
+        padding-top: 55px;
+        padding-bottom: 55px;
+    }
+
+    .hero-page--service .hero-page-content {
+        width: 100%;
+        max-width: 600px;
+
+        order: 1;
+
+        align-items: center;
+
         text-align: center;
     }
 
-    .service-page .hero-actions,
-    .service-hero .hero-actions {
+    .hero-page--service .hero-page-media {
         width: 100%;
 
+        order: 2;
+
+        border-radius: 20px;
+    }
+
+    .hero-page--service .hero-page-media img {
+        width: 100%;
+        height: auto;
+
+        aspect-ratio: 4 / 3;
+
+        object-fit: cover;
+        object-position: center;
+    }
+
+    .hero-page--service .hero-page-content h1 {
+        text-align: center;
+    }
+
+    .hero-page--service .hero-subtitle {
+        text-align: center;
+    }
+
+    .hero-page--service .hero-actions {
+        width: 100%;
+
+        display: flex;
         flex-direction: column;
 
         align-items: center;
         justify-content: center;
+
+        gap: 12px;
     }
 
-    .service-page .hero-actions .btn,
-    .service-hero .hero-actions .btn {
+    .hero-page--service .hero-actions .btn {
         width: min(360px, 100%);
+        justify-content: center;
+    }
+}
+
+/* =========================================================
+   SMALL PHONES
+   ========================================================= */
+
+@media (max-width: 430px) {
+
+    .hero-page--service .hero-page-inner {
+        width: calc(100% - 24px);
+
+        padding-top: 45px;
+        padding-bottom: 45px;
+
+        gap: 28px;
+    }
+
+    .hero-page--service .hero-page-media {
+        border-radius: 16px;
+    }
+
+    .hero-page--service .hero-page-media img {
+        aspect-ratio: 4 / 3;
+    }
+
+    .hero-page--service .hero-actions .btn {
+        width: 100%;
     }
 }
