@@ -1,0 +1,73 @@
+/* Responsive behavior is maintained in css/style.css to keep one coherent breakpoint system. */
+
+
+/* =========================================================
+   FINAL QA OVERRIDE — SERVICE HERO
+   ========================================================= */
+
+.hero-page--service .hero-page-inner {
+    grid-template-columns: 1fr;
+    justify-items: center;
+    text-align: center;
+}
+
+.hero-page--service .hero-page-content {
+    width: min(900px, 100%);
+    margin-inline: auto;
+    text-align: center;
+}
+
+.hero-page--service .hero-page-content .hero-subtitle {
+    margin-inline: auto;
+}
+
+.hero-page--service .hero-actions {
+    justify-content: center;
+    margin-inline: auto;
+}
+
+.hero-page--service .hero-page-media {
+    width: min(620px, 100%);
+    margin-inline: auto;
+    padding: 18px;
+    min-height: 0;
+    border: 1px solid rgba(197,164,109,.42);
+    border-radius: var(--radius-lg);
+    background: rgba(255,255,255,.045);
+}
+
+.hero-page--service .hero-page-media::before {
+    display: none;
+}
+
+.hero-page--service .hero-page-media img {
+    width: 100%;
+    max-width: 100%;
+    max-height: none;
+    height: auto;
+    object-fit: contain;
+    margin: 0 auto;
+}
+
+@media (max-width: 800px) {
+    .hero-page--service .hero-page-inner {
+        grid-template-columns: 1fr;
+        text-align: center;
+    }
+
+    .hero-page--service .hero-page-content,
+    .hero-page--service .hero-page-content .hero-subtitle {
+        margin-inline: auto;
+        text-align: center;
+    }
+
+    .hero-page--service .hero-actions {
+        width: min(360px, 100%);
+        margin-inline: auto;
+    }
+
+    .hero-page--service .hero-page-media {
+        width: min(100%, 520px);
+        padding: 12px;
+    }
+}
