@@ -1,0 +1,15 @@
+/* Responsive behavior is maintained in css/style.css to keep one coherent breakpoint system. */
+
+
+/* Final responsive safety */
+@media (max-width: 800px) {
+    .hero-page--service .hero-page-content {
+        text-align: center;
+    }
+
+    .hero-page--service .hero-actions {
+        justify-content: center;
+        align-items: center;
+    }
+}
+
