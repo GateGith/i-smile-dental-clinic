@@ -1,266 +1,205 @@
-/* I SMILE — SITE INTERACTIONS */
+/* I SMILE — FINAL SITE INTERACTIONS */
 'use strict';
 
-document.addEventListener('DOMContentLoaded', () => {
-  const header = document.querySelector('.header');
-  const navToggle = document.getElementById('navToggle');
-  const navMenu = document.getElementById('navMenu');
-  const heroVideo = document.getElementById('heroVideo');
+document.addEventListener('DOMContentLoaded', function () {
+    var header = document.querySelector('.header');
+    var navToggle = document.getElementById('navToggle');
+    var navMenu = document.getElementById('navMenu');
+    var heroVideo = document.getElementById('heroVideo');
 
-  /* Mobile navigation */
-  if (navToggle && navMenu) {
-    const icon = navToggle.querySelector('i');
+    /* =====================================================
+       MOBILE NAVIGATION
+       ===================================================== */
+    if (navToggle && navMenu) {
+        var icon = navToggle.querySelector('i');
 
-    const setMenu = (open) => {
-      navMenu.classList.toggle('active', open);
-      navToggle.setAttribute('aria-expanded', String(open));
-      navToggle.setAttribute('aria-label', open ? 'Fermer le menu' : 'Ouvrir le menu');
-      document.body.classList.toggle('menu-open', open);
+        function setMenu(open) {
+            if (open) {
+                navMenu.classList.add('active');
+                navToggle.setAttribute('aria-expanded', 'true');
+                navToggle.setAttribute('aria-label', 'Fermer le menu');
+                document.body.classList.add('menu-open');
 
-      if (icon) {
-        icon.classList.toggle('fa-bars', !open);
-        icon.classList.toggle('fa-xmark', open);
-      }
-    };
+                if (icon) {
+                    icon.classList.remove('fa-bars');
+                    icon.classList.add('fa-xmark');
+                }
+            } else {
+                navMenu.classList.remove('active');
+                navToggle.setAttribute('aria-expanded', 'false');
+                navToggle.setAttribute('aria-label', 'Ouvrir le menu');
+                document.body.classList.remove('menu-open');
 
-    navToggle.addEventListener('click', (event) => {
-      event.preventDefault();
-      setMenu(!navMenu.classList.contains('active'));
-    });
+                if (icon) {
+                    icon.classList.remove('fa-xmark');
+                    icon.classList.add('fa-bars');
+                }
+            }
+        }
 
-    navMenu.querySelectorAll('a').forEach((link) => {
-      link.addEventListener('click', () => setMenu(false));
-    });
+        navToggle.setAttribute('type', 'button');
 
-    document.addEventListener('click', (event) => {
-      if (!navMenu.classList.contains('active')) return;
-      if (!navMenu.contains(event.target) && !navToggle.contains(event.target)) {
+        navToggle.addEventListener('click', function (event) {
+            event.preventDefault();
+            event.stopPropagation();
+            setMenu(!navMenu.classList.contains('active'));
+        });
+
+        var links = navMenu.querySelectorAll('a');
+        for (var i = 0; i < links.length; i++) {
+            links[i].addEventListener('click', function () {
+                setMenu(false);
+            });
+        }
+
+        document.addEventListener('click', function (event) {
+            if (!navMenu.classList.contains('active')) return;
+
+            if (!navMenu.contains(event.target) && !navToggle.contains(event.target)) {
+                setMenu(false);
+            }
+        });
+
+        document.addEventListener('keydown', function (event) {
+            if (event.key === 'Escape' && navMenu.classList.contains('active')) {
+                setMenu(false);
+                navToggle.focus();
+            }
+        });
+
+        window.addEventListener('resize', function () {
+            if (window.innerWidth > 800) {
+                setMenu(false);
+            }
+        });
+
         setMenu(false);
-      }
-    });
+    }
 
-    document.addEventListener('keydown', (event) => {
-      if (event.key === 'Escape' && navMenu.classList.contains('active')) {
-        setMenu(false);
-        navToggle.focus();
-      }
-    });
+    /* =====================================================
+       HEADER SCROLL STATE
+       ===================================================== */
+    if (header) {
+        function updateHeader() {
+            if (window.scrollY > 24) {
+                header.classList.add('header-scrolled');
+            } else {
+                header.classList.remove('header-scrolled');
+            }
+        }
 
-    window.addEventListener('resize', () => {
-      if (window.innerWidth > 800) setMenu(false);
-    });
-  }
+        window.addEventListener('scroll', updateHeader, { passive: true });
+        updateHeader();
+    }
 
-  /* Header state */
-  if (header) {
-    const updateHeader = () => {
-      header.classList.toggle('header-scrolled', window.scrollY > 24);
-    };
-    window.addEventListener('scroll', updateHeader, { passive: true });
-    updateHeader();
-  }
+    /* =====================================================
+       SAME-PAGE ANCHORS
+       ===================================================== */
+    var anchors = document.querySelectorAll('a[href^="#"]');
 
-  /* Same-page anchors */
-  document.querySelectorAll('a[href^="#"]').forEach((link) => {
-    link.addEventListener('click', (event) => {
-      const selector = link.getAttribute('href');
-      if (!selector || selector === '#') return;
-      const target = document.querySelector(selector);
-      if (!target) return;
+    for (var a = 0; a < anchors.length; a++) {
+        anchors[a].addEventListener('click', function (event) {
+            var selector = this.getAttribute('href');
 
-      event.preventDefault();
-      const offset = header ? header.offsetHeight + 10 : 10;
-      const top = target.getBoundingClientRect().top + window.scrollY - offset;
-      window.scrollTo({ top: Math.max(0, top), behavior: 'smooth' });
-    });
-  });
+            if (!selector || selector === '#') return;
 
-  /* Hero video: silent autoplay only; no play overlay */
-  if (heroVideo) {
-    heroVideo.muted = true;
-    heroVideo.playsInline = true;
+            var target = document.querySelector(selector);
+            if (!target) return;
 
-    const playHero = () => {
-      const promise = heroVideo.play();
-      if (promise?.catch) promise.catch(() => {});
-    };
+            event.preventDefault();
 
-    playHero();
-    document.addEventListener('visibilitychange', () => {
-      if (!document.hidden) playHero();
-    });
-  }
+            var offset = header ? header.offsetHeight + 10 : 10;
+            var top = target.getBoundingClientRect().top + window.scrollY - offset;
 
-  /* Non-hero videos: explicit premium play control */
-  document.querySelectorAll('.service-video video').forEach((video) => {
-    const wrapper = video.closest('.service-video');
-    if (!wrapper || wrapper.querySelector('.video-play-badge')) return;
+            window.scrollTo({
+                top: Math.max(0, top),
+                behavior: 'smooth'
+            });
+        });
+    }
 
-    const button = document.createElement('button');
-    button.type = 'button';
-    button.className = 'video-play-badge';
-    button.setAttribute('aria-label', 'Lire la vidéo');
-    button.innerHTML = '<i class="fas fa-play" aria-hidden="true"></i>';
-    wrapper.appendChild(button);
+    /* =====================================================
+       HERO VIDEO — AUTOPLAY, NO PLAY BUTTON
+       ===================================================== */
+    if (heroVideo) {
+        heroVideo.muted = true;
+        heroVideo.playsInline = true;
 
-    const sync = () => {
-      const playing = !video.paused && !video.ended;
-      button.classList.toggle('is-playing', playing);
-      button.setAttribute('aria-label', playing ? 'Mettre la vidéo en pause' : 'Lire la vidéo');
-      button.innerHTML = playing
-        ? '<i class="fas fa-pause" aria-hidden="true"></i>'
-        : '<i class="fas fa-play" aria-hidden="true"></i>';
-    };
+        function playHero() {
+            var promise = heroVideo.play();
 
-    button.addEventListener('click', () => {
-      if (video.paused) {
-        video.play().catch(() => {});
-      } else {
-        video.pause();
-      }
-    });
+            if (promise && typeof promise.catch === 'function') {
+                promise.catch(function () {});
+            }
+        }
 
-    video.addEventListener('play', sync);
-    video.addEventListener('pause', sync);
-    video.addEventListener('ended', sync);
-    sync();
-  });
+        playHero();
 
-  /* External links */
-  document.querySelectorAll('a[target="_blank"]').forEach((link) => {
-    link.rel = 'noopener noreferrer';
-  });
+        document.addEventListener('visibilitychange', function () {
+            if (!document.hidden) {
+                playHero();
+            }
+        });
+    }
+
+    /* =====================================================
+       NON-HERO VIDEOS — PLAY BUTTON
+       ===================================================== */
+    var videos = document.querySelectorAll('.service-video video');
+
+    for (var v = 0; v < videos.length; v++) {
+        (function (video) {
+            var wrapper = video.closest('.service-video');
+
+            if (!wrapper || wrapper.querySelector('.video-play-badge')) return;
+
+            var button = document.createElement('button');
+            button.type = 'button';
+            button.className = 'video-play-badge';
+            button.setAttribute('aria-label', 'Lire la vidéo');
+            button.innerHTML = '<i class="fas fa-play" aria-hidden="true"></i>';
+
+            wrapper.appendChild(button);
+
+            function sync() {
+                var playing = !video.paused && !video.ended;
+
+                button.classList.toggle('is-playing', playing);
+                button.setAttribute(
+                    'aria-label',
+                    playing ? 'Mettre la vidéo en pause' : 'Lire la vidéo'
+                );
+
+                button.innerHTML = playing
+                    ? '<i class="fas fa-pause" aria-hidden="true"></i>'
+                    : '<i class="fas fa-play" aria-hidden="true"></i>';
+            }
+
+            button.addEventListener('click', function () {
+                if (video.paused) {
+                    var promise = video.play();
+
+                    if (promise && typeof promise.catch === 'function') {
+                        promise.catch(function () {});
+                    }
+                } else {
+                    video.pause();
+                }
+            });
+
+            video.addEventListener('play', sync);
+            video.addEventListener('pause', sync);
+            video.addEventListener('ended', sync);
+
+            sync();
+        })(videos[v]);
+    }
+
+    /* External links */
+    var externalLinks = document.querySelectorAll('a[target="_blank"]');
+
+    for (var e = 0; e < externalLinks.length; e++) {
+        externalLinks[e].rel = 'noopener noreferrer';
+    }
 });
-/* I SMILE — SITE INTERACTIONS */
-'use strict';
 
-document.addEventListener('DOMContentLoaded', () => {
-  const header = document.querySelector('.header');
-  const navToggle = document.getElementById('navToggle');
-  const navMenu = document.getElementById('navMenu');
-  const heroVideo = document.getElementById('heroVideo');
-
-  /* Mobile navigation */
-  if (navToggle && navMenu) {
-    const icon = navToggle.querySelector('i');
-
-    const setMenu = (open) => {
-      navMenu.classList.toggle('active', open);
-      navToggle.setAttribute('aria-expanded', String(open));
-      navToggle.setAttribute('aria-label', open ? 'Fermer le menu' : 'Ouvrir le menu');
-      document.body.classList.toggle('menu-open', open);
-
-      if (icon) {
-        icon.classList.toggle('fa-bars', !open);
-        icon.classList.toggle('fa-xmark', open);
-      }
-    };
-
-    navToggle.addEventListener('click', (event) => {
-      event.preventDefault();
-      setMenu(!navMenu.classList.contains('active'));
-    });
-
-    navMenu.querySelectorAll('a').forEach((link) => {
-      link.addEventListener('click', () => setMenu(false));
-    });
-
-    document.addEventListener('click', (event) => {
-      if (!navMenu.classList.contains('active')) return;
-      if (!navMenu.contains(event.target) && !navToggle.contains(event.target)) {
-        setMenu(false);
-      }
-    });
-
-    document.addEventListener('keydown', (event) => {
-      if (event.key === 'Escape' && navMenu.classList.contains('active')) {
-        setMenu(false);
-        navToggle.focus();
-      }
-    });
-
-    window.addEventListener('resize', () => {
-      if (window.innerWidth > 800) setMenu(false);
-    });
-  }
-
-  /* Header state */
-  if (header) {
-    const updateHeader = () => {
-      header.classList.toggle('header-scrolled', window.scrollY > 24);
-    };
-    window.addEventListener('scroll', updateHeader, { passive: true });
-    updateHeader();
-  }
-
-  /* Same-page anchors */
-  document.querySelectorAll('a[href^="#"]').forEach((link) => {
-    link.addEventListener('click', (event) => {
-      const selector = link.getAttribute('href');
-      if (!selector || selector === '#') return;
-      const target = document.querySelector(selector);
-      if (!target) return;
-
-      event.preventDefault();
-      const offset = header ? header.offsetHeight + 10 : 10;
-      const top = target.getBoundingClientRect().top + window.scrollY - offset;
-      window.scrollTo({ top: Math.max(0, top), behavior: 'smooth' });
-    });
-  });
-
-  /* Hero video: silent autoplay only; no play overlay */
-  if (heroVideo) {
-    heroVideo.muted = true;
-    heroVideo.playsInline = true;
-
-    const playHero = () => {
-      const promise = heroVideo.play();
-      if (promise?.catch) promise.catch(() => {});
-    };
-
-    playHero();
-    document.addEventListener('visibilitychange', () => {
-      if (!document.hidden) playHero();
-    });
-  }
-
-  /* Non-hero videos: explicit premium play control */
-  document.querySelectorAll('.service-video video').forEach((video) => {
-    const wrapper = video.closest('.service-video');
-    if (!wrapper || wrapper.querySelector('.video-play-badge')) return;
-
-    const button = document.createElement('button');
-    button.type = 'button';
-    button.className = 'video-play-badge';
-    button.setAttribute('aria-label', 'Lire la vidéo');
-    button.innerHTML = '<i class="fas fa-play" aria-hidden="true"></i>';
-    wrapper.appendChild(button);
-
-    const sync = () => {
-      const playing = !video.paused && !video.ended;
-      button.classList.toggle('is-playing', playing);
-      button.setAttribute('aria-label', playing ? 'Mettre la vidéo en pause' : 'Lire la vidéo');
-      button.innerHTML = playing
-        ? '<i class="fas fa-pause" aria-hidden="true"></i>'
-        : '<i class="fas fa-play" aria-hidden="true"></i>';
-    };
-
-    button.addEventListener('click', () => {
-      if (video.paused) {
-        video.play().catch(() => {});
-      } else {
-        video.pause();
-      }
-    });
-
-    video.addEventListener('play', sync);
-    video.addEventListener('pause', sync);
-    video.addEventListener('ended', sync);
-    sync();
-  });
-
-  /* External links */
-  document.querySelectorAll('a[target="_blank"]').forEach((link) => {
-    link.rel = 'noopener noreferrer';
-  });
-});
